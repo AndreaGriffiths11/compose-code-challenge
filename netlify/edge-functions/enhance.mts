@@ -5,12 +5,8 @@ import data from '../data.json' with { type: 'json' };
 export default async (_request: Request, context: Context) => {
   const resp = await context.next();
 
-  // For convenience, the build stashed the repo URL in the site metadata for us
-  // to use
   const repoURL = data.default.repoURL;
   if (!repoURL) {
-    // No repoURL will have been stashed unless we ran `ntl build` locally,
-    // or the site was deployed to Netlify
     console.log('No repoURL found. Run `ntl build` first to enable this feature locally.');
     return resp;
   }
@@ -23,7 +19,11 @@ export default async (_request: Request, context: Context) => {
 };
 
 class RepoLinkHandler {
-  constructor(private repoURL: string) {}
+  private repoURL: string;
+
+  constructor(repoURL: string) {
+    this.repoURL = repoURL;
+  }
 
   element(element: Element) {
     element.prepend(`<a href="${this.repoURL}" target="_blank">`, { html: true });
@@ -33,7 +33,11 @@ class RepoLinkHandler {
 }
 
 class RepoLinkIndexHandler {
-  constructor(private repoURL: string) {}
+  private repoURL: string;
+
+  constructor(repoURL: string) {
+    this.repoURL = repoURL;
+  }
 
   element(element: Element) {
     element.prepend(`<a href="${this.repoURL}/blob/main/www/index.html" target="_blank">`, { html: true });
