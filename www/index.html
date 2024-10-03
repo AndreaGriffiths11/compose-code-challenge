@@ -21,32 +21,24 @@
     <link rel="stylesheet" href="https://example-styles.netlify.app/styles.css" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-
-    <!-- TODO: Add your name to enter the prize draw -->
-    <!-- <meta name="author" content="YOUR NAME"> -->
-
-    <!-- TODO: Add your email and we'll show an avatar in the leaderboard. (And
-    you'll get more points!) -->
-    <!-- <meta name="email" content="YOUR EMAIL ADDRESS"> -->
+    <meta name="author" content="Andrea Griffiths">
+    <meta name="email" content="andreagriffiths11@github.com">
   </head>
-
   <body>
     <partial name="header"></partial>
-
     <main>
       <partial name="step-1"></partial>
       <partial name="step-2"></partial>
-
-      <!-- This looks like a good place for an edge include. -->
-
+      <!-- This custom element will be replaced by the content returned from the href. -->
+      <netlify-edge-include href="https://example.com/some-html">
+      </netlify-edge-include>
+      <netlify-edge-include href="https://compose-challenge.netlify.app/partials/add-image-cdn"></netlify-edge-include>
       <section>
-        <!-- Maybe an image or two will go here...? -->
+        <p>Having a great time at Compose 24</p>
+        <img src="check.svg" alt="Check mark">
       </section>
-
       <!-- This looks like another good place for an edge include! -->
     </main>
-
-    <!-- TODO: Extra credit: Why not add a global branded footer to the site? -->
-    <!-- <netlify-edge-include href="https://compose-challenge.netlify.app/partials/footer"></netlify-edge-include> -->
+    <netlify-edge-include href="https://compose-challenge.netlify.app/partials/footer"></netlify-edge-include>
   </body>
 </html>
